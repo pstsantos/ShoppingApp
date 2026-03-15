@@ -116,7 +116,7 @@ public class Main {
     static void viewCart(ShoppingCart cart) {
         List<Item> items = cart.getItems();
         if (items.isEmpty()) {
-            System.out.println("Your cart is empty.");
+            System.out.println("Your cart is empty!");
             return;
         }
         System.out.println("\n--- Cart Contents ---");
