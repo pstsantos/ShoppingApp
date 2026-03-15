@@ -110,7 +110,7 @@ public class Main {
         }
 
         int count = cart.addItem(new Item(name, price, quantity));
-        System.out.println("✅ Item added! Cart now has " + count + " item(s).");
+        System.out.println("Item added! Cart now has " + count + " item(s).");
     }
 
     static void viewCart(ShoppingCart cart) {
@@ -149,7 +149,7 @@ public class Main {
             try {
                 int qty = Integer.parseInt(input);
                 cart.editQuantity(name, qty);
-                System.out.println("✅ Quantity updated.");
+                System.out.println("Quantity updated.");
                 return;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid quantity. Must be a whole number.");
@@ -165,7 +165,7 @@ public class Main {
         String name = scanner.nextLine().trim();
         try {
             cart.removeItem(name);
-            System.out.println("✅ Item removed.");
+            System.out.println("Item removed.");
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }

@@ -34,7 +34,7 @@ class ShoppingCartTest {
         assertEquals(ShippingType.STANDARD, cartIL.getShippingType());
     }
 
-    // ─── Add Item ───────────────────────────────────────────
+    // add item
 
     @Test
     void addItem_returnsCorrectCartSize() {
@@ -57,7 +57,7 @@ class ShoppingCartTest {
         );
     }
 
-    // ─── Remove Item ─────────────────────────────────────────
+    // remove item
 
     @Test
     void removeItem_existingItem_removesSuccessfully() {
@@ -80,7 +80,7 @@ class ShoppingCartTest {
         );
     }
 
-    // ─── Edit Quantity ────────────────────────────────────────
+    // edit qty
 
     @Test
     void editQuantity_validQuantity_updatesCorrectly() {
@@ -104,7 +104,7 @@ class ShoppingCartTest {
         );
     }
 
-    // ─── Tax ─────────────────────────────────────────────────
+    // tax
 
     @Test
     void getTax_illinoisState_chargesSixPercent() {
@@ -132,7 +132,7 @@ class ShoppingCartTest {
         assertEquals(0.00, cartOther.getTax(), 0.001);
     }
 
-    // ─── Shipping ─────────────────────────────────────────────
+    // shipping
 
     @Test
     void getShipping_standard_under50_chargesTen() {
@@ -164,7 +164,7 @@ class ShoppingCartTest {
         assertEquals(25.00, cartNextDay.getShippingCost(), 0.001);
     }
 
-    // ─── Total ────────────────────────────────────────────────
+    // total
 
     @Test
     void getTotal_correctSumOfRawTaxShipping() {
@@ -188,7 +188,7 @@ class ShoppingCartTest {
         assertThrows(IllegalStateException.class, cart::getTotal);
     }
 
-    // ─── Checkout ─────────────────────────────────────────────
+    // checkout
 
     @Test
     void checkout_validCart_returnsTransactionCompleted() {
@@ -210,7 +210,7 @@ class ShoppingCartTest {
         );
     }
 
-    // ─── Item class ───────────────────────────────────────────
+    // tests for item class
 
     @Test
     void item_getSubtotal_correctCalculation() {

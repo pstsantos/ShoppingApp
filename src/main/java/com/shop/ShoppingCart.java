@@ -22,7 +22,6 @@ public class ShoppingCart {
         this.shippingType = shippingType;
     }
 
-    // Add item to cart
     public int addItem(Item item) {
         if (item.getQuantity() < 1) {
             throw new IllegalArgumentException("Quantity must be at least 1.");
@@ -31,7 +30,6 @@ public class ShoppingCart {
         return items.size();
     }
 
-    // Remove item by name
     public void removeItem(String name) {
         boolean removed = items.removeIf(i -> i.getName().equalsIgnoreCase(name));
         if (!removed) {
@@ -39,7 +37,6 @@ public class ShoppingCart {
         }
     }
 
-    // Edit quantity of an item by name
     public void editQuantity(String name, int newQuantity) {
         if (newQuantity < 1) {
             throw new IllegalArgumentException("Quantity must be at least 1.");
@@ -53,7 +50,6 @@ public class ShoppingCart {
         throw new IllegalArgumentException("Item not found: " + name);
     }
 
-    // Get raw subtotal (before tax and shipping)
     public double getRawTotal() {
         double total = 0;
         for (Item item : items) {
@@ -62,7 +58,6 @@ public class ShoppingCart {
         return total;
     }
 
-    // Calculate tax
     public double getTax() {
         if (state == State.IL || state == State.CA || state == State.NY) {
             return getRawTotal() * TAX_RATE;
@@ -70,7 +65,6 @@ public class ShoppingCart {
         return 0.0;
     }
 
-    // Calculate shipping cost
     public double getShippingCost() {
         if (shippingType == ShippingType.NEXT_DAY) {
             return NEXT_DAY_SHIPPING;
@@ -82,7 +76,6 @@ public class ShoppingCart {
         return STANDARD_SHIPPING;
     }
 
-    // Get grand total (raw + tax + shipping)
     public double getTotal() {
         double total = getRawTotal() + getTax() + getShippingCost();
         if (total < MIN_PURCHASE) {
@@ -94,7 +87,6 @@ public class ShoppingCart {
         return total;
     }
 
-    // Checkout
     public String checkout() {
         if (items.isEmpty()) {
             throw new IllegalStateException("Cannot checkout with an empty cart.");
@@ -104,7 +96,6 @@ public class ShoppingCart {
         return "transaction completed";
     }
 
-    // View cart contents
     public List<Item> getItems() {
         return items;
     }
